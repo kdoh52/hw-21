@@ -8,7 +8,7 @@ export default function Saved() {
         <div>
             <Jumbotron />
             <SearchBar />
-            <SearchResults />
+            {/* <SearchResults /> */}
         </div>
     )
 }
