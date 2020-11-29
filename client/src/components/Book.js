@@ -2,6 +2,8 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
+import AddBtn from "./AddBtn";
+import API from "../utils/API";
 
 
 
@@ -42,6 +44,20 @@ const useStyles = makeStyles(theme => ({
 export default function Book(props) {
     let classes = useStyles();
 
+    function handleAddBook(event) {
+        event.preventDefault();
+        // console.log("PRESSED")
+
+        API.saveBook({
+          title: props.title,
+          author: props.author,
+          description: props.description,
+          image: props.image,
+          link: props.link
+        })
+        .then().catch(err => console.log(err));
+    };
+
     return (
         <div className={classes.container}>
             <Typography className={classes.title} variant='h5'>
@@ -56,6 +72,7 @@ export default function Book(props) {
                 {props.description}
             </p>
             <a href={props.link} className={classes.link}>View Info</a>
+            <AddBtn onClick={handleAddBook}/>
         </div>
     )
 }

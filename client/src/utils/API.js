@@ -2,6 +2,10 @@ import axios from "axios";
 
 export default {
 
+    saveBook: function(bookData) {
+        console.log("THIS IS BOOK DATA", bookData)
+        return axios.post("/api/books", bookData);
+    }
 //   getUsers: function() {
 //     return axios.get("/api/users");
 //   },
