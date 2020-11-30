@@ -30,33 +30,19 @@ const useStyles = makeStyles(theme => ({
         marginTop: "10px",
         marginLeft: "40px"
     },
-    container: {
-        margin: 40,
-        marginTop: 20,
-        // border: '2px solid',
-        backgroundColor: "#e6e6e6",
-        borderRadius: "20px",
-        paddingTop: "20px",
-        paddingBottom: "40px"
-    }
+    // container: {
+    //     margin: 40,
+    //     marginTop: 20,
+    //     // border: '2px solid',
+    //     backgroundColor: "#e6e6e6",
+    //     borderRadius: "20px",
+    //     paddingTop: "20px",
+    //     paddingBottom: "40px"
+    // }
 }))
 
 export default function Book(props) {
     let classes = useStyles();
-
-    function handleAddBook(event) {
-        event.preventDefault();
-        // console.log("PRESSED")
-
-        API.saveBook({
-          title: props.title,
-          author: props.author,
-          description: props.description,
-          image: props.image,
-          link: props.link
-        })
-        .then().catch(err => console.log(err));
-    };
 
     return (
         <div className={classes.container}>
@@ -72,7 +58,7 @@ export default function Book(props) {
                 {props.description}
             </p>
             <a href={props.link} className={classes.link}>View Info</a>
-            <AddBtn onClick={handleAddBook}/>
+            {/* <AddBtn onClick={handleAddBook}/> */}
         </div>
     )
 }

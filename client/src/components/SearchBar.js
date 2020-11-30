@@ -6,6 +6,7 @@ import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import AddBtn from "./AddBtn";
+import API from "../utils/API"
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -23,6 +24,20 @@ const useStyles = makeStyles((theme) => ({
     title: {
         margin: "20px",
         marginLeft: "40px"
+    },
+    book: {
+        backgroundColor: "red",
+        margin: 40,
+        marginTop: 20,
+        backgroundColor: "#e6e6e6",
+        borderRadius: "20px",
+        paddingTop: "20px",
+        paddingBottom: "40px"
+    },
+    add: {
+        display: "block",
+        marginTop: "10px",
+        marginLeft: "40px",
     }
 }));
 
@@ -37,6 +52,20 @@ function Books () {
     // useEffect(() => {
     //     searchBooks("harry potter")
     // }, [])
+
+    function handleAddBook(book) {
+        // event.preventDefault();
+        // console.log("PRESSED")
+
+        API.saveBook({
+          title: book.volumeInfo.title,
+          author: book.volumeInfo.authors,
+          description: book.volumeInfo.description,
+          image: book.volumeInfo.imageLinks.thumbnail,
+          link: book.volumeInfo.infoLink
+        })
+        .then().catch(err => console.log(err));
+    };
     
     function searchBooks(query) {
         const options = {
@@ -85,14 +114,19 @@ function Books () {
                 Results
             </Typography>
             {books.map(book => (
-                <Book 
-                    key={book.id}
-                    title={book.volumeInfo.title}
-                    author={book.volumeInfo.authors}
-                    description={book.volumeInfo.description}
-                    image={book.volumeInfo.imageLinks.thumbnail}
-                    link={book.volumeInfo.infoLink}
-                />
+                <div className={classes.book}>
+                    <Book 
+                        key={book.id}
+                        title={book.volumeInfo.title}
+                        author={book.volumeInfo.authors}
+                        description={book.volumeInfo.description}
+                        image={book.volumeInfo.imageLinks.thumbnail}
+                        link={book.volumeInfo.infoLink}
+                    />
+                    <div className={classes.add}>
+                        <AddBtn onClick={() => handleAddBook(book)}/>
+                    </div>
+                </div>
             ))}
         </div>
     )
