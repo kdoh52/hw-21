@@ -8,7 +8,7 @@ The saved collection displays the books similarly and instead has an option to r
 <img src="google-books.png" alt="google books screenshot">
 
 ## Deployed Application (Heroku)
-<a href="https://kdoh52.github.io/hw-19/" target="_blank">Google Books Search</a>
+<a href="https://afternoon-hamlet-63363.herokuapp.com/" target="_blank">Google Books Search</a>
 
 ## Credits
 * HTML
