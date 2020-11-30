@@ -49,13 +49,7 @@ function Books () {
     const [books, setBooks] = useState([])
     const [formObject, setFormObject] = useState({})
 
-    // useEffect(() => {
-    //     searchBooks("harry potter")
-    // }, [])
-
     function handleAddBook(book) {
-        // event.preventDefault();
-        // console.log("PRESSED")
 
         API.saveBook({
           title: book.volumeInfo.title,
@@ -71,13 +65,11 @@ function Books () {
         const options = {
             method: 'GET',
             url: 'https://www.googleapis.com/books/v1/volumes?q='+ query +'&key=AIzaSyAAIPs_eEsE9tTb_Gkuh0AlJ3Kvk1055UU',
-            // params: {q: 'Harry Potter', media: 'True', lang: 'en'},
         };
         
         axios.request(options).then(function (response) {
             console.log(response.data.items);
             setBooks(response.data.items);
-            //   breakdownResponse(response.data.items);
         }).catch(function (error) {
             console.error(error);
         });
@@ -135,17 +127,3 @@ function Books () {
 
 export default Books;
 
-
-
-// export default function SearchBar() {
-//     const classes = useStyles();
-
-//     return (
-//         <form className={classes.root} noValidate autoComplete="off">
-//             <TextField id="outlined-basic" label="Search Books" variant="outlined" />
-//             <Button className={classes.button} variant="contained" color="primary">
-//                 Search
-//             </Button>
-//         </form>
-//     );
-// }

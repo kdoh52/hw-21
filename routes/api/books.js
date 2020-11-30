@@ -7,18 +7,8 @@ router.route("/")
   .post(booksController.create);
 
 // matches with "/api/books/add"
-// router.route("/add")
-//   .post(booksController.create);
-
-// matches with "/api/books/add"
 router.route("/:id")
   .delete(booksController.remove);
   
-// Matches with "/api/books/:id"
-// router
-//   .route("/:id")
-//   .get(booksController.findById)
-//   .put(booksController.update)
-  // .delete(booksController.remove);
 
 module.exports = router;

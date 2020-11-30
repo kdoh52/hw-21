@@ -3,7 +3,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import API from "../utils/API";
 import Book from "./Book";
-// import AddedBook from "./AddedBook"
 import DeleteBtn from './DeleteBtn';
 
 
